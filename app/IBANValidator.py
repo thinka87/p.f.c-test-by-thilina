@@ -11,10 +11,12 @@ class IBANValidator(Resource):
             args = parser.parse_args()
             iban_number= self._sanitize_iban_number(args["iban_number"])
             is_valid_country =self._validate_iban_country(iban_number)
+
             if is_valid_country is False:
                 return {"message" : "Invalid country","code" : "INVALID_COUNTRY" }, 400
-  
-
+            
+            if self._validate_iban_length(iban_number,int(is_valid_country["iban_length"])) is False:
+                return {"message" : "Invalid IBAN length","code" : "INVALID_IBAN_LENGTH" }, 400
 
     def _sanitize_iban_number(self,iban_number):
 
@@ -43,4 +45,10 @@ class IBANValidator(Resource):
             
         else:
             return False
-            
+    
+    def _validate_iban_length(self,iban_number,iban_number_length):
+
+        if len(iban_number) == iban_number_length:
+            return True
+        
+        return False
