@@ -4,7 +4,9 @@
   "description": "P.F.C Test by Thilina Wijesinghe",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd app && pip3 install -r requirements.txt",
+    "start": "cd app && set FLASK_APP=main.py && python -m flask run",
+    "test": "cypress run"
   },
   "devDependencies": {
     "cypress": "^9.5.2"
