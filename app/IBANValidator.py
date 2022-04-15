@@ -1,7 +1,6 @@
-import re
-from time import strptime
 from flask_restful import Resource
 from flask_restful import reqparse
+import json
 
 class IBANValidator(Resource):
 
@@ -10,7 +9,12 @@ class IBANValidator(Resource):
             parser = reqparse.RequestParser()
             parser.add_argument('iban_number', required=True, type=str, help='iban_number is required')
             args = parser.parse_args()
-            return self._sanitize_iban_number(args["iban_number"])
+            iban_number= self._sanitize_iban_number(args["iban_number"])
+            is_valid_country =self._validate_iban_country(iban_number)
+            if is_valid_country is False:
+                return {"message" : "Invalid country","code" : "INVALID_COUNTRY" }, 400
+  
+
 
     def _sanitize_iban_number(self,iban_number):
 
@@ -26,3 +30,17 @@ class IBANValidator(Resource):
         if text.startswith(prefix):
             text = text.replace(prefix, "", 1)
         return text
+    
+    def _validate_iban_country(self ,iban_number):
+
+
+        iban_registry_file = open('iban_registry.json') 
+        iban_registry = json.load(iban_registry_file)
+        iban_registry_file.close()
+
+        if not (iban_registry.get(iban_number[:2]) is None):
+            return iban_registry.get(iban_number[:2])
+            
+        else:
+            return False
+            
