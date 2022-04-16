@@ -25,6 +25,7 @@ class IBANValidator(Resource):
             if self._validate_iban_checksum(iban_number) is False:
                 return {"message" : "Invalid IBAN checksum value","code" : "INVALID_IBAN_CHECKSUM" }, 400
 
+            return {"message" : "Iban number is valid","code" : "IBAN_IS_VALID" }, 200
 
     def _sanitize_iban_number(self,iban_number):
 
