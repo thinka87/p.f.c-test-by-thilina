@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from IBANValidator import IBANValidator
+import os
 
 app = Flask(__name__) # Get flask app instance
 api = Api(app) # Get flask_restful Api instance
@@ -12,4 +13,4 @@ def page_not_found(e):
     return {"message": e.description}, e.code
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=os.getenv('PORT'))
