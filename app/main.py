@@ -12,5 +12,9 @@ api.add_resource(IBANValidator,'/validate-iban') # Add post request handle to va
 def page_not_found(e):
     return {"message": e.description}, e.code
 
+@app.route('/ping')
+def hello_world():
+    return 'hello'
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.getenv('PORT'))
