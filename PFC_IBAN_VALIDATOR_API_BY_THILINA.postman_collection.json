@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "37a05a28-ddfd-468a-9327-8082a94d8ad6",
+		"name": "PFC_IBAN_VALIDATOR_API_BY_THILINA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "validate iban",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"iban_number\": \"AL47212110090000000235698741\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/validate-iban",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"validate-iban"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "validate iban",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iban_number\": \"AL47212110090000000235698741\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/validate-iban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"validate-iban"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 09:57:51 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Iban number is valid\",\n    \"code\": \"IBAN_IS_VALID\"\n}"
+				},
+				{
+					"name": "validate iban with invalid country",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iban_number\": \"L47212110090000000235698741\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/validate-iban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"validate-iban"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 10:06:47 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid country\",\n    \"code\": \"INVALID_COUNTRY\"\n}"
+				},
+				{
+					"name": "validate iban with invalid length",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iban_number\": \"AL4721211009000000023569874\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/validate-iban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"validate-iban"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 10:10:44 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid IBAN length\",\n    \"code\": \"INVALID_IBAN_LENGTH\"\n}"
+				},
+				{
+					"name": "validate iban with invalid checksum",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iban_number\": \"AL46212110090000000235698741\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/validate-iban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"validate-iban"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "86"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 10:11:45 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid IBAN checksum value\",\n    \"code\": \"INVALID_IBAN_CHECKSUM\"\n}"
+				},
+				{
+					"name": "validate iban with invalid format",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iban_number\": \"DZ351234123Z123412341234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/validate-iban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"validate-iban"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 10:14:42 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid IBAN format\",\n    \"code\": \"INVALID_IBAN_FORMAT\"\n}"
+				}
+			]
+		}
+	]
+}
