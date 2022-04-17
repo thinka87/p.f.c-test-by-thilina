@@ -319,6 +319,67 @@
 					"body": "{\n    \"message\": \"Invalid IBAN format\",\n    \"code\": \"INVALID_IBAN_FORMAT\"\n}"
 				}
 			]
+		},
+		{
+			"name": "API health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.3 Python/3.6.15"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 10:45:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "hello"
+				}
+			]
 		}
 	]
 }
