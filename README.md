@@ -4,7 +4,7 @@
 ## Technologies
 ***
 A list of technologies used within the project:
-* python flask, flask_restful
+* python3, flask, flask_restful
 * Docker
 * cypress js (for testing)
 * npm (node package manager)
@@ -15,8 +15,8 @@ A list of technologies used within the project:
 Steps
 * clone the repositery
 * in terminal run -> npm install
-* to run the api without docker  ->  npm build, then -> npm start , it will start api on  "http://localhost:5000/"
-* to run the api with docker  ->  npm build-docker-image , it will start docker contatiner on port 5000, you access to api using "http://localhost:5000/"
+* to run the api without docker  ->  npm run build, then -> npm start , it will start api on  "http://localhost:5000/"
+* to run the api with docker  ->  npm run build-docker-image , it will start docker contatiner on port 5000, you access to api using "http://localhost:5000/"
 * api document - https://documenter.getpostman.com/view/1510812/Uyr5oK1a
 * you can find postman collection from "PFC_IBAN_VALIDATOR_API_BY_THILINA.postman_collection.json"
 * To valiadate an IBAN number send a POST request to "http://localhost:5000/validate-iban" including below json body
@@ -41,4 +41,4 @@ Steps
 
 ## Notes
 ***
-* To run the npm start command in windows, please change the command as "cd app && set FLASK_APP=main.py && python -m flask run" in package.json file
+* To run the npm start command in windows, please change the command as "cd app && set FLASK_APP=main.py && python3 -m flask run" in package.json file
