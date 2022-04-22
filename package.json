@@ -1,7 +1,7 @@
 {
-  "name": "pfc-test",
+  "name": "python-flask-api-example",
   "version": "1.0.0",
-  "description": "P.F.C Test by Thilina Wijesinghe",
+  "description": "python-flask-api-example",
   "main": "index.js",
   "scripts": {
     "build": "cd app && pip3 install -r requirements.txt",
